@@ -27,7 +27,7 @@ def main():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=1))
     service_pb2_grpc.add_ServerServicer_to_server(ServerServicer(), server)
 
-    server.add_secure_port('[::]:'+port, server_credentials)
+    server.add_insecure_port('[::]:'+port)
 
     server.start()
     try:
